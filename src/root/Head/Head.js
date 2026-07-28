@@ -4,6 +4,7 @@ import { MenuContext } from '../../MenuContext'
 import { useContext } from 'react'
 import style from './head.module.css'
 export const Head = () => {
+        // display only when landing not visible
         const [menuState, menuDispatch] = useContext(MenuContext)
         const active = menuState.head
         console.log(active)
