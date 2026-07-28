@@ -2,6 +2,9 @@ import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } 
 import { Root }from "./root/Root"
 import { Landing } from "./root/Main/Landing/Landing"
 import { Stream } from "./root/Main/Stream/Stream"
+import { useReducer } from 'react'
+import {MenuContext} from './MenuContext'
+import { menuReducer, initialMenuState } from "./menuReducer";
 
 import './App.css';
 
@@ -24,9 +27,13 @@ createBrowserRouter( createRoutesFromElements(
 ))
 
 function App() {
+    const [ menuState, menuDispatch ] = useReducer( menuReducer, initialMenuState)
+  
   return (
     <>
-      <RouterProvider router={router}/>
+      <MenuContext.Provider value={[menuState, menuDispatch]}>
+        <RouterProvider router={router}/>
+      </MenuContext.Provider>
     </>
   );
 }
