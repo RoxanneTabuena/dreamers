@@ -1,7 +1,7 @@
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
 import { Root }from "./root/Root"
 import { Landing } from "./root/Main/Landing/Landing"
-import { Feed } from "./root/Main/Feed/Feed"
+import { Stream } from "./root/Main/Stream/Stream"
 
 import './App.css';
 
@@ -18,7 +18,7 @@ createBrowserRouter( createRoutesFromElements(
         />
         <Route
           path='/:tag'
-          element={<Feed />}
+          element={<Stream />}
         />
   </Route>
 ))
