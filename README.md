@@ -18,3 +18,4 @@ tags>memos>posts
 TODO
 7.28 
 1042 Create Component Structure
+1107 Link Components

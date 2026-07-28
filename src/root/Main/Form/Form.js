@@ -1,37 +1,38 @@
 import { useState } from 'react'
+import { useRef } from 'react'
 import { service_id, template_id, public_key } from "./keys"
-import emailjs from 'emailjs-com'
+import emailjs from '@emailjs/browser'
 import style from './form.module.css'
 
 export const Form = () => {
-    const [ name, setName ] = useState('')
-    const [ phone, setPhone ] = useState('')
-    const [ preferred, setPreferred ] = useState('')
-    const [ email, setEmail ] = useState('')
-    const [alertActive, setAlertActive] = useState(false)
-    const [outcome, setOutcome] = useState('success')
+  const form = useRef();
 
-
-
-    const handleSubmit = (e) => {
+  const sendEmail = (e) => {
     e.preventDefault();
-    emailjs.sendForm(service_id, template_id, e.target, public_key)
-    .then((result) => {
-        setOutcome('success')
-        setAlertActive(true)
-    }, (error) => {
-        setOutcome('failure')
-        setAlertActive(true)
-        console.log(error.text);
-    });
-    }
 
+    emailjs
+      .sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form.current, {
+        publicKey: 'YOUR_PUBLIC_KEY',
+      })
+      .then(
+        () => {
+          console.log('SUCCESS!');
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+        },
+      );
+  };
 
-    return (
-        <form onSubmit={handleSubmit} className={style.form}>
-            <input type='hidden' id="title" value="GENERAL"/>
-            {/* consent, not a robot */}
-            <button type='submit'>Submit</button>
-        </form>
-    )
-}
+  return (
+    <form ref={form} onSubmit={sendEmail}>
+      <label>Name</label>
+      <input type="text" name="user_name" />
+      <label>Email</label>
+      <input type="email" name="user_email" />
+      <label>Message</label>
+      <textarea name="message" />
+      <input type="submit" value="Send" />
+    </form>
+  );
+};
