@@ -1,17 +1,16 @@
 import { Home } from './Home/Home' 
 import { Nav } from './Nav/Nav' 
-import { MenuContext } from '../../MenuContext'
+import { HeadContext } from '../../HeadContext'
 import { useContext } from 'react'
 import style from './head.module.css'
 export const Head = () => {
         // display only when landing not visible
-        const [menuState, menuDispatch] = useContext(MenuContext)
-        const active = menuState.head
-        console.log(active)
+        const [headState, headDispatch] = useContext(HeadContext)
+        const active = headState.head
     return (
-        <div className={style.head}>
+        <header className={style.head}>
             <Home/>
             <Nav/>
-        </div>
+        </header>
     )
 }

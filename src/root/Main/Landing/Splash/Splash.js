@@ -1,10 +1,10 @@
 import { useContext } from 'react'
-import { MenuContext } from '../../../../MenuContext'
+import { HeadContext } from '../../../../HeadContext'
 import { Tag } from '../../Tag/Tag'
 import { tags } from '../../Stream/content'
 import style from './splash.module.css'
 export const Splash = () => {
-    const [menuState, menuDispatch ] = useContext(MenuContext)
+    const [headState, headDispatch ] = useContext(HeadContext)
     const menu = Object.keys(tags).map((t)=>{return <Tag tag={t} key={t}/>})
     return (
         <div className={style.splash}>

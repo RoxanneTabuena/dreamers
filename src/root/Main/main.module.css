@@ -1,5 +1,8 @@
-.comp{
-    
+.main{
+    /* screen height minus height of header */
+    max-height: calc(100vh - 1em);
+    min-height: calc(100vh - 1em);
+    overflow-y: scroll;
 }
 
 /* PHONE RULES */
