@@ -3,8 +3,8 @@ import { Root }from "./root/Root"
 import { Landing } from "./root/Main/Landing/Landing"
 import { Stream } from "./root/Main/Stream/Stream"
 import { useReducer } from 'react'
-import {MenuContext} from './MenuContext'
-import { menuReducer, initialMenuState } from "./menuReducer";
+import {HeadContext} from './HeadContext'
+import { headReducer, initialHeadState } from "./headReducer";
 
 import './App.css';
 
@@ -27,14 +27,14 @@ createBrowserRouter( createRoutesFromElements(
 ))
 
 function App() {
-    const [ menuState, menuDispatch ] = useReducer( menuReducer, initialMenuState)
+    const [ headState, headDispatch ] = useReducer( headReducer, initialHeadState)
   
   return (
-    <>
-      <MenuContext.Provider value={[menuState, menuDispatch]}>
+    <div>
+      <HeadContext.Provider value={[headState, headDispatch]}>
         <RouterProvider router={router}/>
-      </MenuContext.Provider>
-    </>
+      </HeadContext.Provider>
+    </div>
   );
 }
 

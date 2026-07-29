@@ -1,5 +1,5 @@
 import { createContext } from "react";
-export const MenuContext = createContext()
+export const HeadContext = createContext()
 /*
 Imagine we wanted to pass down a theme to all of our components,
  either “light” or “dark”, which would change the appearance of our components. 
