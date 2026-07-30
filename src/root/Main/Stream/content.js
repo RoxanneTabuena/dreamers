@@ -1,6 +1,7 @@
 import { ARP } from './Post/posts/ARP'
 import { Clients } from './Post/posts/clients'
 import { Timezones } from './Post/posts/Timezones'
+import { Wiz } from './Post/posts/Wiz'
 export const tags = {
     'web' : {
         ID: 0,
@@ -13,6 +14,10 @@ export const tags = {
     'APIs' : {
         ID: 6,
         contentIDs: [7,8]
+    },
+    'Blender' : {
+        ID: 9,
+        contentIDs: [10,11]
     }
 }
 
@@ -26,6 +31,10 @@ const automation = [
 
 const APIs = [
     `Finally taking the time to learn APIs felt like going outside for the first time. Freedom! Why didn't I study this sooner?`
+]
+
+const blender = [
+    `Learning blender has been such a gift and a curse. With countless application and customization potential, the world of creation is truly unlocked. I am forever cursed with the knowlege that I could be improving things.`
 ]
 export const content = {
     1: {
@@ -51,6 +60,14 @@ export const content = {
     8 : {
         type: `post`,
         content: <Timezones/>
+    },
+    10: {
+        type: `memo`,
+        content: blender[0]
+    },
+    11: {
+        type: `post`,
+        content: <Wiz/>
     }
 
 }
