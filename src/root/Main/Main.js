@@ -1,7 +1,6 @@
 import { Contact } from './Contact/Contact'
 import { Form } from './Form/Form'
 import { useRef } from 'react'
-import { useEffect } from 'react'
 import { Outlet } from 'react-router'
 import { useContext } from 'react'
 import { HeadContext } from '../../HeadContext'
