@@ -1,0 +1,73 @@
+
+  var sheet = SpreadsheetApp.getActiveSheet();
+  var calendarId = *REDACTED*
+  var calendar = CalendarApp.getCalendarById(calendarId);
+
+    if (!calendar) {
+    Logger.log("Calendar not found. Please check your Calendar ID.");
+    return;
+  }
+  
+  // Set the timeframe (e.g., from start of employment to tomorrow)
+  var startTime = new Date(10-11-2025);
+  var endTime = new Date();
+  endTime.setDate(endTime.getDate()+1); 
+  
+  // Fetch events
+  var events = calendar.getEvents(startTime, endTime);
+  
+  // Clear existing content below the headers
+  if (sheet.getLastRow() > 1) {
+    sheet.getRange(2, 1, sheet.getLastRow() - 1, 4).clearContent();
+  }
+  
+  // Loop through events and add them to the sheet
+  for (var i = 0; i < events.length; i++) {
+    var event = events[i];
+    var title = event.getTitle();
+    if(title.includes("for")){
+      title = title.split("for ")[1];
+    }
+    if(title.includes("*")){
+      title= title.split("*")[0];
+    }
+    var type = "";
+    if(title.includes("(")){
+      var splitTitle = title.split(/[()]/);
+      title = splitTitle[0]
+      type = splitTitle[1]
+    }
+    var location = event.getLocation();
+    var start = Utilities.formatDate(event.getStartTime(), "PST", "yyyy,MM,dd,HH,mm").split(',');
+    var end = Utilities.formatDate(event.getEndTime(), "PST", "HH,mm").split(',');
+
+    // get participants
+    const SKdirectory = {
+        *REDACTED*
+    }
+    guests = event.getGuestList(true).map(function(guest) {
+      var guest = guest.getEmail();
+      return SKdirectory[guest]
+    }).join(", ");
+    var notes = event.getDescription();
+    var zone = ""
+    if(notes.includes("zone" || "Zone" || "ZONE")){
+      zone= notes.split(`"`)[1].replace(/\D/g, "")
+    }
+    if (guests.includes("Shara")){
+      sheet.appendRow([
+        i,
+        title,
+        type,
+        location,
+        start[0],
+        start[1],
+        start[2],
+        start[3],
+        start[4],
+        end[0],
+        end[1],
+        guests,
+        zone,
+        notes
+      ]);}

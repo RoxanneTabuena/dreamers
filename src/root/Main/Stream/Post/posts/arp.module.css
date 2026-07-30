@@ -1,0 +1,13 @@
+@font-face {
+font-family: "ARP";
+src: url(../../../../../assets/fonts/AvenirNextLTPro-Regular.otf);
+}
+
+.arp{
+    font-family: "ARP";
+}
+/* PHONE RULES */
+@media screen and ( max-width: 699px) {}
+
+/* DESK RULES */
+@media screen and ( min-width: 700px) {}
