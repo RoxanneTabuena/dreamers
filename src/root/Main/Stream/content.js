@@ -2,10 +2,11 @@ import { ARP } from './Post/posts/ARP'
 import { Clients } from './Post/posts/clients'
 import { Timezones } from './Post/posts/Timezones'
 import { Wiz } from './Post/posts/Wiz'
+import { Fisheye } from './Post/posts/Fisheye'
 export const tags = {
     'web' : {
         ID: 0,
-        contentIDs: [1,2]
+        contentIDs: [1,2,8,11,14]
     },
     'automation' : {
         ID: 4,
@@ -18,6 +19,10 @@ export const tags = {
     'Blender' : {
         ID: 9,
         contentIDs: [10,11]
+    },
+    'React' : {
+        ID: 12,
+        contentIDs: [13,14,8,11]
     }
 }
 
@@ -35,6 +40,10 @@ const APIs = [
 
 const blender = [
     `Learning blender has been such a gift and a curse. With countless application and customization potential, the world of creation is truly unlocked. I am forever cursed with the knowlege that I could be improving things.`
+]
+
+const react = [
+    `Probably the best tool to come out of the social media boom. I couldn't imagine building it.`
 ]
 export const content = {
     1: {
@@ -68,6 +77,14 @@ export const content = {
     11: {
         type: `post`,
         content: <Wiz/>
+    },
+    13: {
+        type: `memo`,
+        content: react[0]
+    },
+    14: {
+        type: `post`,
+        content: <Fisheye/>
     }
 
 }
